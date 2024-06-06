@@ -1,15 +1,22 @@
 import React from "react";
+import store, { persistor } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-// import darkTheme from "./themes/dark.theme";
 import lightTheme from "./themes/light.theme";
-import Main from "./components/Main";
+
+import { Provider } from "react-redux";
+import ProtectedRouterProvider from "./router/ProtectedRouterProvider";
 
 function App() {
 	return (
-		<ThemeProvider theme={lightTheme}>
-			<CssBaseline />
-			<Main />
-		</ThemeProvider>
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor}>
+				<ThemeProvider theme={lightTheme}>
+					<CssBaseline />
+					<ProtectedRouterProvider />
+				</ThemeProvider>
+			</PersistGate>
+		</Provider>
 	);
 }
 

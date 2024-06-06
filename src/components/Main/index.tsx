@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Grid } from "@mui/material";
 import Menu from "./Menu";
+import { Outlet } from "react-router-dom";
 
 interface IMainProps {}
 const Main: React.FC<IMainProps> = () => {
@@ -20,7 +21,7 @@ const Main: React.FC<IMainProps> = () => {
 					<Menu />
 				</Grid>
 				<Grid item xs={11}>
-					TU BĘDZIE ROUTER
+					<Outlet />
 				</Grid>
 			</Grid>
 		</Container>
