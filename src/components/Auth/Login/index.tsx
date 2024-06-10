@@ -44,7 +44,11 @@ const Login: React.FC<ILoginProps> = () => {
 					label="password"
 					variant="outlined"
 				/>
-				<Button onClick={loginUser} variant="contained" color="primary">
+				<Button
+					onClick={loginUser}
+					variant="contained"
+					color="secondary"
+				>
 					Login
 				</Button>
 			</Box>

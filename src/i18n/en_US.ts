@@ -1,5 +1,9 @@
 const en_US = {
-	test: "Test US",
+	menuLink: {
+		home: "Home",
+		about: "About",
+		contact: "Contact",
+	},
 };
 
 export default en_US;

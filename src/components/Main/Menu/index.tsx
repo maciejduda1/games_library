@@ -1,8 +1,11 @@
 import React from "react";
 import { Link, Stack, Typography } from "@mui/material";
-import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../../store/reducers/auth.reducer";
+import ThemeSwitch from "./ThemeSwitch";
+import linkList from "./linkList";
+import { translate } from "../../../i18n";
+import MenuLink from "./MenuLink";
 
 interface IMenuProps {}
 const Menu: React.FC<IMenuProps> = () => {
@@ -11,17 +14,20 @@ const Menu: React.FC<IMenuProps> = () => {
 		dispatch(setToken(null));
 	};
 	return (
-		<Stack spacing={2} borderRight={2} height={"100vh"} pl={2} pt={2}>
-			<Typography variant="h6">Menu</Typography>
-			<NavLink to={"/"}>Item 1</NavLink>
-			<NavLink to={"/"}>Item 2</NavLink>
-			<NavLink to={"/"}>Item 3</NavLink>
-			<NavLink to={"/"}>Item 4</NavLink>
+		<Stack spacing={2} borderRight={2} height={"100vh"}>
+			<Stack flexGrow={1} spacing={2}>
+				{linkList.map((link) => (
+					<MenuLink to={link.path}>
+						{translate(`menuLink.${link.title}`)}
+					</MenuLink>
+				))}
+			</Stack>
 			<Link>
-				<Typography onClick={logout} variant="subtitle1">
+				<Typography mb={4} onClick={logout} variant="subtitle1">
 					Logout
 				</Typography>
 			</Link>
+			<ThemeSwitch />
 		</Stack>
 	);
 };

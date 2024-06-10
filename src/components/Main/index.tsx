@@ -16,7 +16,7 @@ const Main: React.FC<IMainProps> = () => {
 				// 	"linear-gradient(0deg, rgba(121,9,9,1) 0%, rgba(38,7,7,1) 35%, rgba(0,0,0,1) 100%)",
 			}}
 		>
-			<Grid container spacing={2}>
+			<Grid container>
 				<Grid item xs={1}>
 					<Menu />
 				</Grid>
