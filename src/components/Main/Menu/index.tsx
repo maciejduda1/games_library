@@ -1,27 +1,30 @@
 import React from "react";
-import { Link, Stack, Typography } from "@mui/material";
-import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setToken } from "../../../store/reducers/auth.reducer";
+import linkList from "./linkList";
+import List from "@mui/material/List";
+import MenuLink from "./MenuLink";
+import ThemeSwitch from "./ThemeSwitch";
+import Logout from "./Logout";
+import Divider from "@mui/material/Divider";
+import { Stack } from "@mui/material";
 
-interface IMenuProps {}
-const Menu: React.FC<IMenuProps> = () => {
-	const dispatch = useDispatch();
-	const logout = () => {
-		dispatch(setToken(null));
-	};
+interface IMenuProps {
+	open: boolean;
+}
+const Menu: React.FC<IMenuProps> = ({ open }) => {
 	return (
-		<Stack spacing={2} borderRight={2} height={"100vh"} pl={2} pt={2}>
-			<Typography variant="h6">Menu</Typography>
-			<NavLink to={"/"}>Item 1</NavLink>
-			<NavLink to={"/"}>Item 2</NavLink>
-			<NavLink to={"/"}>Item 3</NavLink>
-			<NavLink to={"/"}>Item 4</NavLink>
-			<Link>
-				<Typography onClick={logout} variant="subtitle1">
-					Logout
-				</Typography>
-			</Link>
+		<Stack height={"100vh"}>
+			<List>
+				{linkList.map((link) => (
+					<MenuLink key={link.id} link={link} open={open}>
+						{link.icon}
+					</MenuLink>
+				))}
+			</List>
+			<List style={{ marginTop: "auto" }}>
+				<Divider />
+				<ThemeSwitch open={open} />
+				<Logout open={open} />
+			</List>
 		</Stack>
 	);
 };

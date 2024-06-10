@@ -5,6 +5,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@fontsource/roboto": "^5.0.13",
+    "@mui/icons-material": "^5.15.21",
     "@mui/material": "^5.15.18",
     "@reduxjs/toolkit": "^2.2.5",
     "@testing-library/jest-dom": "^5.17.0",
@@ -25,8 +27,12 @@
     "redux-observable": "^3.0.0-rc.2",
     "redux-persist": "^6.0.0",
     "rxjs": "^7.8.1",
+    "sass": "^1.77.4",
+    "simple-xml-to-json": "^1.2.2",
     "typescript": "^4.9.5",
+    "use-debounce": "^10.0.1",
     "web-vitals": "^2.1.4",
+    "xml-js": "^1.6.11",
     "yup": "^1.4.0"
   },
   "scripts": {

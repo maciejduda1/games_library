@@ -1,11 +1,11 @@
 import React from "react";
-import { Box, Container, Paper, TextField, Typography } from "@mui/material";
+import { Box, Stack, TextField, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 interface IRegisterProps {}
 const Register: React.FC<IRegisterProps> = () => {
 	return (
-		<Paper elevation={1}>
+		<Stack px={4}>
 			<Box
 				display="flex"
 				justifyContent="center"
@@ -43,7 +43,7 @@ const Register: React.FC<IRegisterProps> = () => {
 				</Typography>
 				<NavLink to={"/"}>Login</NavLink>
 			</Box>
-		</Paper>
+		</Stack>
 	);
 };
 

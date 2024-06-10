@@ -1,12 +1,5 @@
 import React from "react";
-import {
-	Box,
-	Button,
-	Container,
-	Paper,
-	TextField,
-	Typography,
-} from "@mui/material";
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../../store/reducers/auth.reducer";
 import { NavLink } from "react-router-dom";
@@ -22,7 +15,7 @@ const Login: React.FC<ILoginProps> = () => {
 	};
 
 	return (
-		<Paper elevation={1}>
+		<Stack>
 			<Box
 				display="flex"
 				justifyContent="center"
@@ -44,7 +37,11 @@ const Login: React.FC<ILoginProps> = () => {
 					label="password"
 					variant="outlined"
 				/>
-				<Button onClick={loginUser} variant="contained" color="primary">
+				<Button
+					onClick={loginUser}
+					variant="contained"
+					color="secondary"
+				>
 					Login
 				</Button>
 			</Box>
@@ -58,7 +55,7 @@ const Login: React.FC<ILoginProps> = () => {
 				</Typography>
 				<NavLink to={"/register"}>Register</NavLink>
 			</Box>
-		</Paper>
+		</Stack>
 	);
 };
 
