@@ -39,6 +39,20 @@ export const authenticatedRootRouter = createBrowserRouter([
 			{
 				path: "books",
 				element: <Books />,
+				children: [
+					{
+						path: "",
+						element: <Books />,
+					},
+					{
+						path: "add",
+						element: <Books />,
+					},
+					{
+						path: "details/:id",
+						element: <Books />,
+					},
+				],
 			},
 			{
 				path: "comics",
