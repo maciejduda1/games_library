@@ -1,24 +1,42 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Book, Comic, Game } from "../../types/basicModels.model";
 
-//todo: Define the initial state, types etc.
-const initialState: { games: { id: string }[] } = {
+export interface ILibraryState {
+	games: Game[];
+	books: Book[];
+	comics: Comic[];
+}
+
+//todo: remove mock data
+const initialState: ILibraryState = {
 	games: [],
+	books: [],
+	comics: [],
 };
 
 const librarySlice = createSlice({
 	name: "library",
 	initialState,
 	reducers: {
-		addBook(state, action) {
-			state.games.push(action.payload);
+		addElement(state, action: PayloadAction<Game | Book | Comic>) {
+			const elementType = action.payload.type;
+			return {
+				...state,
+				[elementType]: [...state[elementType], action.payload],
+			};
 		},
-		removeBook(state, action) {
-			state.games = state.games.filter(
-				(book) => book.id !== action.payload,
+		removeElement(state, action: PayloadAction<Game | Book | Comic>) {
+			const elementType = action.payload.type;
+			const newElements = state[elementType].filter(
+				(el) => el.id !== action.payload.id,
 			);
+			return {
+				...state,
+				[elementType]: [...newElements],
+			};
 		},
 	},
 });
 
-export const { addBook, removeBook } = librarySlice.actions;
+export const { addElement, removeElement } = librarySlice.actions;
 export default librarySlice.reducer;
