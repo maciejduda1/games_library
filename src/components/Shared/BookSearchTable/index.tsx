@@ -1,4 +1,5 @@
-import React from "react";
+import React, { FC } from "react";
+import { styled } from "@mui/material/styles";
 import {
 	CircularProgress,
 	Paper,
@@ -11,11 +12,10 @@ import {
 	TableRow,
 } from "@mui/material";
 import { translate } from "../../../i18n";
-import { styled } from "@mui/material/styles";
-import { GameSearchResultModel } from "../../../types/searchResult.model";
 import IconButton from "@mui/material/IconButton";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import { useNavigate } from "react-router-dom";
+import { Book } from "../../../types/basicModels.model";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -36,16 +36,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 		border: 0,
 	},
 }));
-interface ITableBaseProps {
-	rows: GameSearchResultModel[];
+interface IBookSearchTableProps {
+	rows: Book[];
 	isLoading?: boolean;
 }
-const GameSearchTable = ({ rows, isLoading }: ITableBaseProps) => {
+const BookSearchTable: FC<IBookSearchTableProps> = ({ isLoading, rows }) => {
 	const navigate = useNavigate();
 	const viewElement = (id: string | number) => {
-		navigate(`/games/details/${id}`);
+		navigate(`/books/details/${id}`);
 	};
-
 	return (
 		<TableContainer component={Paper}>
 			<Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -56,6 +55,12 @@ const GameSearchTable = ({ rows, isLoading }: ITableBaseProps) => {
 						</StyledTableCell>
 						<StyledTableCell align="right">
 							{translate("table.title")}
+						</StyledTableCell>
+						<StyledTableCell align="right">
+							{translate("table.author")}
+						</StyledTableCell>
+						<StyledTableCell align="right">
+							{translate("table.year")}
 						</StyledTableCell>
 						<StyledTableCell align="right">
 							{translate("table.actions")}
@@ -73,6 +78,12 @@ const GameSearchTable = ({ rows, isLoading }: ITableBaseProps) => {
 									{row.title}
 								</StyledTableCell>
 								<StyledTableCell align="right">
+									{row.author}
+								</StyledTableCell>
+								<StyledTableCell align="right">
+									{row.year}
+								</StyledTableCell>
+								<StyledTableCell align="right">
 									<IconButton
 										onClick={() => viewElement(row.id)}
 									>
@@ -84,7 +95,7 @@ const GameSearchTable = ({ rows, isLoading }: ITableBaseProps) => {
 					{isLoading && (
 						<StyledTableRow>
 							<StyledTableCell
-								colSpan={3}
+								colSpan={10}
 								component="th"
 								scope="row"
 							>
@@ -97,5 +108,4 @@ const GameSearchTable = ({ rows, isLoading }: ITableBaseProps) => {
 		</TableContainer>
 	);
 };
-
-export default GameSearchTable;
+export default BookSearchTable;

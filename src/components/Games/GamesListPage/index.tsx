@@ -39,7 +39,7 @@ const GamesListPage = () => {
 					variant={"contained"}
 					onClick={navigateToAddGame}
 				>
-					Add Game
+					{translate("game.addGame")}
 				</Button>
 			</Box>
 			<OwnedTable data={filteredTableData} />

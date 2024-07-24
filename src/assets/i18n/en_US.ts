@@ -24,11 +24,16 @@ const en_US = {
 		actions: "Actions",
 		search: "Search",
 		noResults: "No results to display",
+		author: "Author",
+		year: "Year",
 	},
 	game: {
 		addGame: "Add game",
 		editGame: "Edit game",
 		author: "Author: ",
+	},
+	books: {
+		addBook: "Add book",
 	},
 	button: {
 		add: "Add",

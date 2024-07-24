@@ -5,5 +5,10 @@ export interface Game extends CollectionElementModel {
 	description: string;
 }
 
-export interface Book extends CollectionElementModel {}
+export interface Book extends CollectionElementModel {
+	year: number;
+	description: string;
+	isbn: string;
+	publisher: string;
+}
 export interface Comic extends CollectionElementModel {}

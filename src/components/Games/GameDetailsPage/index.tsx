@@ -16,6 +16,7 @@ import Box from "@mui/material/Box";
 import { translate } from "../../../i18n";
 import { useDispatch } from "react-redux";
 import { addElement } from "../../../store/reducers/library.reducer";
+import { decodeHtml } from "../../../utils/dataManipulation.utils";
 
 interface IGameDetailsPageProps {}
 const GameDetailsPage: React.FC<IGameDetailsPageProps> = () => {
@@ -88,16 +89,6 @@ const GameDetailsPage: React.FC<IGameDetailsPageProps> = () => {
 
 	if (isLoading) {
 		return <CircularProgress color="secondary" />;
-	}
-
-	function decodeHtml(html: string | null) {
-		if (!html) {
-			return "";
-		}
-		let areaElement = document.createElement("textarea");
-		areaElement.innerHTML = html;
-
-		return areaElement.value;
 	}
 
 	const addGameToCollection = () => {

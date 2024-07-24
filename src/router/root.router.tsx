@@ -10,6 +10,9 @@ import Account from "../components/Account";
 import AddGamesPage from "../components/Games/AddGamesPage";
 import GamesListPage from "../components/Games/GamesListPage";
 import GameDetailsPage from "../components/Games/GameDetailsPage";
+import BooksListPage from "../components/Books/BooksListPage";
+import BookDetailsPage from "../components/Books/BookDetailsPage";
+import AddBooksPage from "../components/Books/AddBooksPage";
 
 export const authenticatedRootRouter = createBrowserRouter([
 	{
@@ -42,15 +45,15 @@ export const authenticatedRootRouter = createBrowserRouter([
 				children: [
 					{
 						path: "",
-						element: <Books />,
+						element: <BooksListPage />,
 					},
 					{
 						path: "add",
-						element: <Books />,
+						element: <AddBooksPage />,
 					},
 					{
 						path: "details/:id",
-						element: <Books />,
+						element: <BookDetailsPage />,
 					},
 				],
 			},

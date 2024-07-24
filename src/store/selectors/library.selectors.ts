@@ -11,3 +11,8 @@ export const gamesSelector = createSelector(
 	libraryStateSelector,
 	(library: ILibraryState) => library.games,
 );
+
+export const booksSelector = createSelector(
+	libraryStateSelector,
+	(library: ILibraryState) => library.books,
+);
